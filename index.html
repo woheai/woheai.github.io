@@ -1,1 +1,117 @@
-666
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dialog</title>
+<style>
+input,button {
+  font-size: inherit;
+}
+
+.dialog-message {
+  max-width: 20em;
+  border: 0 none;
+  box-shadow: 0 1px 3px rgba(0 0 0 / 30%);
+  padding: 0 1.5em 1.5em;
+  border-radius: .5rem;
+  background-color: #F2F2F2;
+}
+.dialog-message::backdrop {
+  background-color: hsla(0, 0%, 0%, .2);
+}
+.dialog-title {
+  margin: 0 -1.5rem;
+  position: relative;
+}
+.dialog-message h5 {
+  font-size: 1.2rem;
+  line-height: 1;
+  text-align: center;
+  margin: 0;
+  background-color: #DE1D1D;
+  padding: 1rem 0;
+  margin: 0;
+  color: white;
+}
+.dialog-message .close {
+  font-size: 0.8rem;
+  width: 1rem;
+  background-color: transparent;
+  color: white;
+  line-height: 1;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1rem;
+  padding: 1rem;
+  margin: 0;
+}
+.dialog-message p {
+  display: flex;
+}
+.dialog-message label {
+  flex: 3em;
+  text-align: right;
+  margin-right: .5em;
+}
+.dialog-message button {
+  width: calc(100% - 3.5em);
+  margin-left: 3.5em;
+  padding: .3rem 1.5rem;
+  color: white;
+  background-color: #DE1D1D;
+  border-radius: 8px;
+  border: 0;
+}
+.dialog-message button:focus {
+  outline: 0;
+}
+</style>
+</head>
+
+<body>
+<h1>弹出层或对话框的弹出/关闭</h1>
+<p>Popover属性是HTML5的新特性，用于创建原生的弹出层/对话框。具有以下优点。</p>
+<ul>
+  <li>简化开发。无需编写JavaScript代码即可创建功能完整的弹出层，减少开发复杂度。</li>
+  <li>性能优化。浏览器原生实现，比JavaScript实现的弹出层具有更好的性能。</li>
+  <li>无障碍访问。内置无障碍支持，自动处理焦点管理和键盘导航。</li>
+</ul>
+<p>操作步骤：</p>
+<ol>
+  <li>第一步，指定弹出层和类型。给弹出层或/话框添加popover属性。</li>
+  <li>第二步，通过单击按钮完成弹出层/对话框的弹出和关闭。通过给按钮添加popovertarget属性，值为弹出层的id属性值。添加popovertargetaction属性。注意：这两个属性只能用于type=button的按钮。</li>
+</ol>
+<p>例子：单击“登陆”，将弹出对话框。单击对话框右上角的×会关闭对话框。</p>
+
+<!-- 指定popovertarget为dialog-message，popovertargetaction为toggle -->
+<div>
+  <button class="login"  popovertarget="popover-message" popovertargetaction="toggle">登陆</button>
+</div>
+<!-- 下面的div可以换为dialog -->
+<!-- 添加id属性，值为popover-message。添加popover属性，属性值为auto, 用于创建原生的弹出层/对话框的类型-->
+<div class="dialog-message"  id="popover-message" popover>
+  <div class="dialog-title">
+    <h5>登陆</h5>
+    <!-- 指定popovertarget为dialog-message，popovertargetaction为toggle -->
+    <button class="close" type="button" popovertarget="popover-message" popovertargetaction="toggle">╳</button>
+  </div>
+
+  <form action="">
+    <p>
+      <label>用户名</label>
+      <input type="text">
+    </p>
+    <p>
+      <label>密码</label>
+      <input type="text">
+    </p>
+    <button type="submit">登陆</button>
+  </form>
+</div>
+
+</body>
+</html>
